@@ -17,8 +17,10 @@ jobs:
       uses: actions/setup-java@v1
       with:
         java-version: 1.8
-    - name: Inject version number into pom.xml
-      run: sed -i "s|INJECTED-VERSION|${{ vars.VERSION }}|g" pom.xml
+    - name: Inject version number and link into pom.xml
+      run: |
+        sed -i "s|INJECTED-VERSION|${{ vars.VERSION }}|g" pom.xml
+        sed -i "s|http://localhost:8081|${{ vars.LINK }}"|g" pom.xml
     - name: Build with Maven
       run: ./mvnw -B package --file pom.xml --settings settings.xml
     - name: Nexus Repo Publish
