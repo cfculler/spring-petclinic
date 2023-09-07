@@ -3,18 +3,18 @@
   <servers>
     <server>
       <id>nexus-repo</id>
-      <username>${{ secrets.USERNAME }}</username>
-      <password>${{ secrets.PASSWORD }}</password>
+      <username>INJECTED-USERNAME</username>
+      <password>INJECTED-PASSWORD</password>
     </server>
     <server>
       <id>nexus-repo-snapshot</id>
-      <username>${{ secrets.USERNAME }}</username>
-      <password>${{ secrets.PASSWORD }}</password>
+      <username>INJECTED-USERNAME</username>
+      <password>INJECTED-PASSWORD</password>
     </server>
     <server>
       <id>nexus-pull-repo</id>
-      <username>${{ secrets.USERNAME }}</username>
-      <password>${{ secrets.PASSWORD }}</password>
+      <username>INJECTED-USERNAME</username>
+      <password>INJECTED-PASSWORD</password>
     </server>
   </servers>
   <!-- Nexus repo to pull from -->
