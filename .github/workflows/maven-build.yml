@@ -20,7 +20,7 @@ jobs:
     - name: Inject version number and link into pom.xml
       run: |
         sed -i "s|INJECTED-VERSION|${{ vars.VERSION }}|g" pom.xml
-        sed -i "s|http://localhost:8081|${{ vars.LINK }}"|g" pom.xml
+        sed -i "s|http://localhost:8081|${{ vars.LINK }}|g" pom.xml
     - name: Build with Maven
       run: ./mvnw -B package --file pom.xml --settings settings.xml
     - name: Nexus Repo Publish
