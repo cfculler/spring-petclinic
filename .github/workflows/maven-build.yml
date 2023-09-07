@@ -5,6 +5,8 @@ on:
     branches:
       - master
   workflow_dispatch:
+  repository_dispatch:
+    types: [doc_update]
 
 jobs:
   build:
@@ -20,6 +22,7 @@ jobs:
     - name: Inject version number and link into pom.xml, and authentication into settings.xml
       run: |
         sed -i "s|INJECTED-VERSION|${{ vars.VERSION }}|g" pom.xml
+        sed -i "s|INJECTED-DEPENDENCY|${{ github.event.client_payload.VERSION }}|g" pom.xml
         sed -i "s|http://localhost:8081|${{ vars.LINK }}|g" pom.xml
         sed -i "s|INJECTED-USERNAME|${{ secrets.USERNAME }}|g" settings.xml
         sed -i "s|INJECTED-PASSWORD|${{ secrets.PASSWORD }}|g" settings.xml
